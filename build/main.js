@@ -20215,7 +20215,7 @@
 
 
 	// module
-	exports.push([module.id, "html, body {\n  width: 100vw;\n  height: 100vh;\n  background-color: pink; }\n", ""]);
+	exports.push([module.id, "html, body {\n  width: 100vw;\n  height: 100vh;\n  background-color: coral; }\n", ""]);
 
 	// exports
 
