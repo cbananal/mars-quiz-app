@@ -1,5 +1,26 @@
-html, body {
-  width: 100vw;
+
+/*===========================*/
+/*===========Global==========*/
+/*===========================*/
+
+.wrapper {
   height: 100vh;
-  background-color: coral;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+header {
+  background: linear-gradient(to bottom, #602722 0%,#4d0135 100%);
+}
+
+header h1 {
+  font-size: 60px;
+  text-transform: uppercase;
+}
+
+.mars-react {
+  width: 100%;
+  background:
+    url('/src/images/mars-bg.jpg') no-repeat top;
+    background-size: cover;
 }
