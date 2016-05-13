@@ -11,14 +11,15 @@ module.exports = {
         path: path.join(__dirname, 'build/')
     },
     // devtool: '#source-map',
-    devServer: {
+    devServer: { //update your webpack config with this to prevent your cpu from melting!
       watch:true,
       inline: true,
       host: '0.0.0.0',
       port: '3000',
       watchOptions: {
             aggregateTimeout: 300,
-            poll: true
+            // poll: true
+            poll:2000
       }
     },
     module: {
