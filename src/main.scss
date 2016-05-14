@@ -1,5 +1,5 @@
 /*===========================*/
-/*===========Fonts==========*/
+/*===========Fonts===========*/
 /*===========================*/
 
 /*---------Open Sans---------*/
@@ -59,6 +59,10 @@ header h1 {
   width: 100px;
   height: 100px;
   font-size: 4.5rem;
+  text-shadow:
+    -1px 2px #757575,
+    -1px 4px #666,
+    -1px 5px #4c4c4c;
   background:
     url('/src/images/mars-icon.png');
     background-size: 100px 100px;
