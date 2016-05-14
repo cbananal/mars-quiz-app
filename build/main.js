@@ -76,14 +76,14 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = {
-	      page: "home"
+	      page: 'home'
 	    };
 	    return _this;
 	  }
 
 	  _createClass(App, [{
 	    key: '_loadPage',
-	    value: function _loadPage() {
+	    value: function _loadPage(page) {
 	      this.setState({ page: page });
 	    }
 	  }, {
@@ -99,7 +99,7 @@
 	        case 'quiz':
 	          return React.createElement(QuizPage, { navigate: this._loadPage.bind(this) });
 	          break;
-	        case 'results':
+	        case 'result':
 	          return React.createElement(ResultPage, { navigate: this._loadPage.bind(this) });
 	          break;
 	      }
@@ -149,6 +149,38 @@
 
 	  return HomePage;
 	}(React.Component); //end class HomePage
+
+	var StartPage = function (_React$Component3) {
+	  _inherits(StartPage, _React$Component3);
+
+	  function StartPage() {
+	    _classCallCheck(this, StartPage);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(StartPage).apply(this, arguments));
+	  }
+
+	  _createClass(StartPage, [{
+	    key: '_beginQuiz',
+	    value: function _beginQuiz() {
+	      this.props.navigate('quiz');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'button',
+	          { onClick: this._beginQuiz.bind(this) },
+	          'Begin Evaluation'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return StartPage;
+	}(React.Component); //end class StartPage
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('mars-react'));
 
