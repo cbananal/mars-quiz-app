@@ -118,6 +118,38 @@
 	  return App;
 	}(React.Component); //end class App
 
+	var HomePage = function (_React$Component2) {
+	  _inherits(HomePage, _React$Component2);
+
+	  function HomePage() {
+	    _classCallCheck(this, HomePage);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(HomePage).apply(this, arguments));
+	  }
+
+	  _createClass(HomePage, [{
+	    key: '_transition',
+	    value: function _transition() {
+	      this.props.navigate('start');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'button',
+	          { onClick: this._transition.bind(this) },
+	          'Take Test'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return HomePage;
+	}(React.Component); //end class HomePage
+
 	ReactDOM.render(React.createElement(App, null), document.getElementById('mars-react'));
 
 /***/ },
@@ -20594,7 +20626,7 @@
 
 
 	// module
-	exports.push([module.id, "/*===========================*/\n/*===========Global==========*/\n/*===========================*/\n.wrapper {\n  height: 100vh;\n  color: #fff;\n  display: flex;\n  justify-content: space-between; }\n\nheader {\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%); }\n\nheader h1 {\n  font-size: 60px;\n  text-transform: uppercase; }\n\n.mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat top;\n  background-size: cover; }\n", ""]);
+	exports.push([module.id, "/*===========================*/\n/*===========Global==========*/\n/*===========================*/\n.wrapper {\n  height: 100vh;\n  color: #fff;\n  display: flex;\n  justify-content: space-between; }\n\nheader {\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%); }\n\nheader h1 {\n  font-size: 60px;\n  text-transform: uppercase; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n", ""]);
 
 	// exports
 

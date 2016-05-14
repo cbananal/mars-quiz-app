@@ -12,22 +12,22 @@ class App extends React.Component {
     }
   }
 
-  _loadPage() {
-    this.setState( {page});
+  _loadPage(page) {
+    this.setState({page});
   }
 
   _initialize() {
     switch(this.state.page) {
-      case 'home':
+      case "home":
         return (<HomePage navigate={this._loadPage.bind(this)}/>)
         break;
-      case 'start':
+      case "start":
         return (<StartPage navigate={this._loadPage.bind(this)}/>)
         break;
-      case 'quiz':
+      case "quiz":
         return (<QuizPage navigate={this._loadPage.bind(this)}/>)
         break;
-      case 'results':
+      case "results":
         return (<ResultPage navigate={this._loadPage.bind(this)}/>)
         break;
     }
@@ -44,5 +44,19 @@ class App extends React.Component {
 } //end class App
 
 
+class HomePage extends React.Component {
+
+  _transition() {
+    this.props.navigate("start")
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this._transition.bind(this)}>Take Test</button>
+      </div>
+    );
+  }
+} //end class HomePage
 
 ReactDOM.render(<App />, document.getElementById('mars-react'));
