@@ -1,3 +1,22 @@
+/*===========================*/
+/*===========Fonts==========*/
+/*===========================*/
+
+/*---------Open Sans---------*/
+
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('/src/fonts/opensans-light-webfont.eot');
+    src: url('/src/fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/src/fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('/src/fonts/opensans-light-webfont.woff') format('woff'),
+         url('/src/fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('/src/fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /*===========================*/
 /*===========Global==========*/
@@ -8,19 +27,19 @@ html {
 }
 .wrapper {
   height: 100vh;
+  font-family: 'open_sanslight', sans-serif;
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 header {
   width: 180px;
-  font-family: sans-serif;
+  padding: 250px 0 140px;
   background: linear-gradient(to bottom, #602722 0%,#4d0135 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  // flex-wrap: wrap-reverse;
+  justify-content: space-around;
 }
 
 header h1, .rocketship {
@@ -28,16 +47,19 @@ header h1, .rocketship {
 }
 
 header h1 {
-  font-size: 4.5rem;
-  color: #fff;
+  font-size: 7rem;
+  // font-weight: bold;
+  color: #e1b9a7;
+  text-shadow: 1px 3px 3px #b29284;
   text-transform: uppercase;
-  align-content: space-between;
+  letter-spacing: -5px;
 }
 
 .rocketship {
   width: 100px;
   height: 100px;
   font-size: 4.5rem;
+  line-height: 40px;
   background:
     url('/src/images/mars-icon.png');
     background-size: 100px 100px;
