@@ -82,3 +82,25 @@ header h1 {
   justify-content: center;
   align-items: center;
 }
+
+/*===========================*/
+/*========Virtual DOM========*/
+/*===========================*/
+.initbutton {
+  width: 225px;
+  height: auto;
+  padding: 25px;
+  color: #4e0234;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+  background-color: #f2c4b0;
+  opacity: 0.8;
+  text-shadow: 2px 2px 1px #c693a4;
+  // display: flex;
+  // justify-content: center;
+}
