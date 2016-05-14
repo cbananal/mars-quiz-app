@@ -19,7 +19,8 @@ module.exports = {
       watchOptions: {
             aggregateTimeout: 300,
             // poll: true
-            poll:2000
+            poll:2000,
+      compress: true
       }
     },
     module: {
@@ -35,7 +36,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
-            }
+            },
+            {
+                test: /\.(jpg|png)$/,
+                loader: "url-loader",
+            },
         ]
     },
     resolve: {

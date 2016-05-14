@@ -16,11 +16,15 @@ header {
 header h1 {
   font-size: 60px;
   text-transform: uppercase;
+  // transform: translateX(30px) rotate(-90deg);
 }
 
-.mars-react {
+#mars-react {
   width: 100%;
   background:
-    url('/src/images/mars-bg.jpg') no-repeat top;
+    url('/src/images/mars-bg.jpg') no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
