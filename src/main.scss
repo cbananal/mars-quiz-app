@@ -3,6 +3,9 @@
 /*===========Global==========*/
 /*===========================*/
 
+html {
+  font-size: 16px;
+}
 .wrapper {
   height: 100vh;
   color: #fff;
@@ -11,21 +14,38 @@
 }
 
 header {
+  width: 180px;
+  font-family: sans-serif;
   background: linear-gradient(to bottom, #602722 0%,#4d0135 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  // flex-wrap: wrap-reverse;
+}
+
+header h1, .rocketship {
+  transform: rotate(270deg);
 }
 
 header h1 {
-  font-size: 60px;
+  font-size: 4.5rem;
   color: #fff;
   text-transform: uppercase;
-  // transform: rotate(270deg);
+  align-content: space-between;
 }
 
 .rocketship {
-  background: url('/src/images/rocketship.jpg');
+  width: 100px;
+  height: 100px;
+  font-size: 4.5rem;
+  background:
+    url('/src/images/mars-icon.png');
+    background-size: 100px 100px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 #mars-react {
@@ -33,7 +53,7 @@ header h1 {
   background:
     url('/src/images/mars-bg.jpg') no-repeat;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
