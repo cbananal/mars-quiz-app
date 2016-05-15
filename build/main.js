@@ -73,7 +73,10 @@
 	  function App(props) {
 	    _classCallCheck(this, App);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+	    //Don't ask why and how for now. Read more about it later.
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props)); //Constructor and props enable the use of 'this.state'
+
 
 	    _this.state = {
 	      page: 'home'
@@ -84,6 +87,7 @@
 	  _createClass(App, [{
 	    key: '_loadPage',
 	    value: function _loadPage(page) {
+	      // This takes 'page' for a value.
 	      this.setState({ page: page });
 	    }
 	  }, {
@@ -140,7 +144,7 @@
 	        null,
 	        React.createElement(
 	          'button',
-	          { onClick: this._transition.bind(this) },
+	          { className: 'cta-button', onClick: this._transition.bind(this) },
 	          'Take Test'
 	        )
 	      );
@@ -172,7 +176,7 @@
 	        null,
 	        React.createElement(
 	          'button',
-	          { onClick: this._beginQuiz.bind(this) },
+	          { className: 'cta-button', onClick: this._beginQuiz.bind(this) },
 	          'Begin Evaluation'
 	        )
 	      );
@@ -181,6 +185,124 @@
 
 	  return StartPage;
 	}(React.Component); //end class StartPage
+
+	// let questionnaire = [
+	//     {
+	//       ask: 'What is the highest mountain on Mars?',
+	//       answer: 'Mons Olympus'
+	//     },
+	//     {
+	//       ask: 'What year did the Sojourner Rover, the first robot rover, go to Mars?',
+	//       answer: '1997'
+	//     },
+	//     {
+	//       ask: 'Mars was named after the Roman god of what?',
+	//       answer: 'war'
+	//     }
+	// ];
+
+	var QuizPage = function (_React$Component4) {
+	  _inherits(QuizPage, _React$Component4);
+
+	  function QuizPage(props) {
+	    _classCallCheck(this, QuizPage);
+
+	    var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(QuizPage).call(this, props));
+
+	    _this4.state = {
+	      questionnaire: [{
+	        ask: 'What is the highest mountain on Mars?',
+	        answer: 'Mons Olympus',
+	        result: false //There is no answer given yet that's why it starts at false.
+	      }, {
+	        ask: 'What year did the Sojourner Rover, the first robot rover, go to Mars?',
+	        answer: '1997',
+	        result: false
+	      }, {
+	        ask: 'Mars was named after the Roman god of what?',
+	        answer: 'war',
+	        result: false
+	      }],
+	      itemNum: 0 //This tracks the question the user is currently on.
+	    };
+	    return _this4;
+	  }
+
+	  _createClass(QuizPage, [{
+	    key: '_submitAnswer',
+	    value: function _submitAnswer(button) {
+	      var _this5 = this;
+
+	      button.preventDefault();
+
+	      // console.log(this.refs.userAnswer.value);
+	      //newQuestionnaire is a new array copied from the state questionnaire so we can modify it.
+	      //listblock refers to the whole list (ask, answer, result) in the array questionnaire.
+	      if (this.refs.userAnswer.value === this.state.questionnaire[this.state.itemNum].answer) {
+	        var newQuestionnaire = this.state.questionnaire.map(function (listblock) {
+	          if (_this5.state.questionnaire[_this5.state.itemNum] === listblock) {
+	            listblock.result = true;
+	          }
+	          return listblock;
+	        });
+	      }
+	      // console.log(this.state.questionnaire);
+
+	      this.setState({ itemNum: this.state.itemNum + 1 });
+	      // console.log(this.state.itemNum);
+
+	      //Clear the previous answer
+	      this.refs.userAnswer.value = "";
+	    }
+	  }, {
+	    key: '_tallyScore',
+	    value: function _tallyScore() {
+	      var rightAnswers = 0;
+	      console.log('hi');
+
+	      var score = this.state.questionnaire.map(function (listblock) {
+	        if (listblock.result === true) {
+	          rightAnswers++;
+	          console.log(rightAnswers);
+	        }
+	      }); //end map
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        this.state.itemNum < 3 ? React.createElement(
+	          'div',
+	          { className: 'question-area' },
+	          React.createElement(
+	            'p',
+	            null,
+	            this.state.questionnaire[this.state.itemNum].ask
+	          ),
+	          React.createElement(
+	            'form',
+	            null,
+	            React.createElement('input', { type: 'text', ref: 'userAnswer' }),
+	            React.createElement(
+	              'button',
+	              { onClick: this._submitAnswer.bind(this) },
+	              'Submit'
+	            )
+	          ),
+	          React.createElement(
+	            'button',
+	            { onClick: this._tallyScore.bind(this) },
+	            'Calculate'
+	          )
+	        ) : ''
+	      );
+	    }
+	  }]);
+
+	  return QuizPage;
+	}(React.Component); //end class QuizPage
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('mars-react'));
 
@@ -20658,7 +20780,7 @@
 
 
 	// module
-	exports.push([module.id, "/*===========================*/\n/*===========Global==========*/\n/*===========================*/\n.wrapper {\n  height: 100vh;\n  color: #fff;\n  display: flex;\n  justify-content: space-between; }\n\nheader {\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%); }\n\nheader h1 {\n  font-size: 60px;\n  text-transform: uppercase; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n", ""]);
+	exports.push([module.id, "/*===========================*/\n/*===========Fonts===========*/\n/*===========================*/\n/*---------Open Sans---------*/\n@font-face {\n  font-family: 'open_sanslight';\n  src: url(\"/src/fonts/opensans-light-webfont.eot\");\n  src: url(\"/src/fonts/opensans-light-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/opensans-light-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/opensans-light-webfont.woff\") format(\"woff\"), url(\"/src/fonts/opensans-light-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/opensans-light-webfont.svg#open_sanslight\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: 'a_spaceregular';\n  src: url(\"/src/fonts/aspace_demo-webfont.eot\");\n  src: url(\"/src/fonts/aspace_demo-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/aspace_demo-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/aspace_demo-webfont.woff\") format(\"woff\"), url(\"/src/fonts/aspace_demo-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/aspace_demo-webfont.svg#a_spaceregular\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*===========================*/\n/*===========Global==========*/\n/*===========================*/\nhtml {\n  font-size: 16px; }\n\n.wrapper {\n  height: 100vh;\n  font-family: 'open_sanslight', sans-serif;\n  color: #fff;\n  display: flex;\n  justify-content: center; }\n\nheader {\n  width: 180px;\n  padding: 250px 0 140px;\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around; }\n\nheader h1, .rocketship {\n  transform: rotate(270deg); }\n\nheader h1 {\n  font-size: 5rem;\n  font-family: 'a_spaceregular', sans-serif;\n  color: #e1b9a7;\n  text-shadow: 1px 3px 3px #b29284;\n  text-transform: uppercase; }\n\n.rocketship {\n  width: 100px;\n  height: 100px;\n  font-size: 4.5rem;\n  text-shadow: -1px 2px #757575, -1px 4px #666, -1px 5px #4c4c4c;\n  background: url(\"/src/images/mars-icon.png\");\n  background-size: 100px 100px;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n/*===========================*/\n/*========Virtual DOM========*/\n/*===========================*/\n.cta-button {\n  width: 225px;\n  height: auto;\n  font-size: 1.4rem;\n  font-weight: bold;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  text-shadow: 2px 2px 1px #c693a4; }\n\n.cta-button, .question-area {\n  padding: 25px;\n  color: #4e0234;\n  text-align: center;\n  border: 2px solid #fff;\n  border-radius: 0.5rem;\n  background-color: #f2c4b0;\n  opacity: 0.8; }\n\n.question-area {\n  font-size: 1.3rem;\n  font-weight: bold;\n  font-style: italic; }\n\n.question-area input {\n  width: 200px;\n  outline: none;\n  margin: 5px;\n  padding: 5px;\n  font-family: 'open_sanslight', sans-serif;\n  font-size: 1rem;\n  text-align: center;\n  background-color: #f2c4b0;\n  border-top: 0px;\n  border-right: 0px;\n  border-left: 0px; }\n", ""]);
 
 	// exports
 

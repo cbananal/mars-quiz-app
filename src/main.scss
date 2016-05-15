@@ -37,6 +37,7 @@
 html {
   font-size: 16px;
 }
+
 .wrapper {
   height: 100vh;
   font-family: 'open_sanslight', sans-serif;
@@ -97,21 +98,45 @@ header h1 {
 /*===========================*/
 /*========Virtual DOM========*/
 /*===========================*/
-.initbutton {
+.cta-button {
   width: 225px;
   height: auto;
-  padding: 25px;
-  color: #4e0234;
   font-size: 1.4rem;
   font-weight: bold;
-  text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-shadow: 2px 2px 1px #c693a4;
+}
+
+.cta-button, .question-area {
+  padding: 25px;
+  color: #4e0234;
+  text-align: center;
   border: 2px solid #fff;
   border-radius: 0.5rem;
   background-color: #f2c4b0;
   opacity: 0.8;
-  text-shadow: 2px 2px 1px #c693a4;
-  // display: flex;
-  // justify-content: center;
+}
+
+.question-area {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.question-area input {
+  width: 200px;
+  outline: none;
+  margin: 7px;
+  padding: 5px;
+  font-family: 'open_sanslight', sans-serif;
+  font-size: 1rem;
+  color: #913b37;
+  text-align: center;
+  background-color: #f2c4b0;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px solid #4e0234;
+
 }
