@@ -84,7 +84,7 @@ class QuizPage extends React.Component {
       questionnaire: [
           {
             ask: 'What is the highest mountain on Mars?',
-            answer: 'Mons Olympus',
+            answer: 'mons olympus',
             result: false //There is no answer given yet that's why it starts at false.
           },
           {
@@ -105,10 +105,13 @@ class QuizPage extends React.Component {
   _submitAnswer(button) {
     button.preventDefault();
 
+    let userAnswer = this.refs.userAnswer.value.toLowerCase();
+    // console.log(userAnswer);
+
     // console.log(this.refs.userAnswer.value);
     //newQuestionnaire is a new array copied from the state questionnaire so we can modify it.
     //listblock refers to the whole list (ask, answer, result) in the array questionnaire.
-    if (this.refs.userAnswer.value === this.state.questionnaire[this.state.itemNum].answer) {
+    if (userAnswer === this.state.questionnaire[this.state.itemNum].answer) {
         const newQuestionnaire = this.state.questionnaire.map((listblock) => {
           if (this.state.questionnaire[this.state.itemNum] === listblock) {
             listblock.result = true;
