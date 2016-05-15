@@ -135,13 +135,23 @@ class QuizPage extends React.Component {
     });
 
     //You cannot do 'listblock.results > 2' below because listblock is inside
-    //the map in the above code. Variables inside a function cannot go
+    //the map in const score. Variables inside a function cannot go
     //outside of it.
-
     if (rightAnswers > 2) {
       this.props.navigate('pass');
     } else {
       this.props.navigate('fail');
+    }
+  }
+
+
+  //The following is a built-in function on React. You can put it anywhere
+  //as it runs all the time. If any changes happen in a class, it will be called.
+  //In this case, it will go back to the first page if the user fails.
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.itemNum === 3) {
+      this._tallyScore();
+      this.setState({itemNum:0}) //Set the state back to zero (like the default state).
     }
   }
 
@@ -161,5 +171,11 @@ class QuizPage extends React.Component {
     );
   }
 } //end class QuizPage
+
+
+
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('mars-react'));

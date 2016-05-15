@@ -103,8 +103,11 @@
 	        case 'quiz':
 	          return React.createElement(QuizPage, { navigate: this._loadPage.bind(this) });
 	          break;
-	        case 'result':
-	          return React.createElement(ResultPage, { navigate: this._loadPage.bind(this) });
+	        case 'pass':
+	          return React.createElement(PassPage, { navigate: this._loadPage.bind(this) });
+	          break;
+	        case 'fail':
+	          return React.createElement(FailPage, { navigate: this._loadPage.bind(this) });
 	          break;
 	      }
 	    }
@@ -186,21 +189,6 @@
 	  return StartPage;
 	}(React.Component); //end class StartPage
 
-	// let questionnaire = [
-	//     {
-	//       ask: 'What is the highest mountain on Mars?',
-	//       answer: 'Mons Olympus'
-	//     },
-	//     {
-	//       ask: 'What year did the Sojourner Rover, the first robot rover, go to Mars?',
-	//       answer: '1997'
-	//     },
-	//     {
-	//       ask: 'Mars was named after the Roman god of what?',
-	//       answer: 'war'
-	//     }
-	// ];
-
 	var QuizPage = function (_React$Component4) {
 	  _inherits(QuizPage, _React$Component4);
 
@@ -258,14 +246,34 @@
 	    key: '_tallyScore',
 	    value: function _tallyScore() {
 	      var rightAnswers = 0;
-	      console.log('hi');
 
 	      var score = this.state.questionnaire.map(function (listblock) {
 	        if (listblock.result === true) {
 	          rightAnswers++;
-	          console.log(rightAnswers);
 	        }
-	      }); //end map
+	      });
+
+	      //You cannot do 'listblock.results > 2' below because listblock is inside
+	      //the map in const score. Variables inside a function cannot go
+	      //outside of it.
+	      if (rightAnswers > 2) {
+	        this.props.navigate('pass');
+	      } else {
+	        this.props.navigate('fail');
+	      }
+	    }
+
+	    //The following is a built-in function on React. You can put it anywhere
+	    //as it runs all the time. If any changes happen in a class, it will be called.
+	    //In this case, it will go back to the first page if the user fails.
+
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (this.state.itemNum === 3) {
+	        this._tallyScore();
+	        this.setState({ itemNum: 0 }); //Set the state back to zero (like the default state).
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -290,13 +298,13 @@
 	              { onClick: this._submitAnswer.bind(this) },
 	              'Submit'
 	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { onClick: this._tallyScore.bind(this) },
-	            'Calculate'
 	          )
-	        ) : ''
+	        ) : '',
+	        React.createElement(
+	          'button',
+	          { onClick: this._tallyScore.bind(this) },
+	          'Calculate'
+	        )
 	      );
 	    }
 	  }]);
@@ -20780,7 +20788,7 @@
 
 
 	// module
-	exports.push([module.id, "/*===========================*/\n/*===========Fonts===========*/\n/*===========================*/\n/*---------Open Sans---------*/\n@font-face {\n  font-family: 'open_sanslight';\n  src: url(\"/src/fonts/opensans-light-webfont.eot\");\n  src: url(\"/src/fonts/opensans-light-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/opensans-light-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/opensans-light-webfont.woff\") format(\"woff\"), url(\"/src/fonts/opensans-light-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/opensans-light-webfont.svg#open_sanslight\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: 'a_spaceregular';\n  src: url(\"/src/fonts/aspace_demo-webfont.eot\");\n  src: url(\"/src/fonts/aspace_demo-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/aspace_demo-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/aspace_demo-webfont.woff\") format(\"woff\"), url(\"/src/fonts/aspace_demo-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/aspace_demo-webfont.svg#a_spaceregular\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*===========================*/\n/*===========Global==========*/\n/*===========================*/\nhtml {\n  font-size: 16px; }\n\n.wrapper {\n  height: 100vh;\n  font-family: 'open_sanslight', sans-serif;\n  color: #fff;\n  display: flex;\n  justify-content: center; }\n\nheader {\n  width: 180px;\n  padding: 250px 0 140px;\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around; }\n\nheader h1, .rocketship {\n  transform: rotate(270deg); }\n\nheader h1 {\n  font-size: 5rem;\n  font-family: 'a_spaceregular', sans-serif;\n  color: #e1b9a7;\n  text-shadow: 1px 3px 3px #b29284;\n  text-transform: uppercase; }\n\n.rocketship {\n  width: 100px;\n  height: 100px;\n  font-size: 4.5rem;\n  text-shadow: -1px 2px #757575, -1px 4px #666, -1px 5px #4c4c4c;\n  background: url(\"/src/images/mars-icon.png\");\n  background-size: 100px 100px;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n/*===========================*/\n/*========Virtual DOM========*/\n/*===========================*/\n.cta-button {\n  width: 225px;\n  height: auto;\n  font-size: 1.4rem;\n  font-weight: bold;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  text-shadow: 2px 2px 1px #c693a4; }\n\n.cta-button, .question-area {\n  padding: 25px;\n  color: #4e0234;\n  text-align: center;\n  border: 2px solid #fff;\n  border-radius: 0.5rem;\n  background-color: #f2c4b0;\n  opacity: 0.8; }\n\n.question-area {\n  font-size: 1.3rem;\n  font-weight: bold;\n  font-style: italic; }\n\n.question-area input {\n  width: 200px;\n  outline: none;\n  margin: 5px;\n  padding: 5px;\n  font-family: 'open_sanslight', sans-serif;\n  font-size: 1rem;\n  text-align: center;\n  background-color: #f2c4b0;\n  border-top: 0px;\n  border-right: 0px;\n  border-left: 0px; }\n", ""]);
+	exports.push([module.id, "/*===========================*/\n/*===========Fonts===========*/\n/*===========================*/\n/*---------Open Sans---------*/\n@font-face {\n  font-family: 'open_sanslight';\n  src: url(\"/src/fonts/opensans-light-webfont.eot\");\n  src: url(\"/src/fonts/opensans-light-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/opensans-light-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/opensans-light-webfont.woff\") format(\"woff\"), url(\"/src/fonts/opensans-light-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/opensans-light-webfont.svg#open_sanslight\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: 'a_spaceregular';\n  src: url(\"/src/fonts/aspace_demo-webfont.eot\");\n  src: url(\"/src/fonts/aspace_demo-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/aspace_demo-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/aspace_demo-webfont.woff\") format(\"woff\"), url(\"/src/fonts/aspace_demo-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/aspace_demo-webfont.svg#a_spaceregular\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*===========================*/\n/*===========Global==========*/\n/*===========================*/\nhtml {\n  font-size: 16px; }\n\n.wrapper {\n  height: 100vh;\n  font-family: 'open_sanslight', sans-serif;\n  color: #fff;\n  display: flex;\n  justify-content: center; }\n\nheader {\n  width: 180px;\n  padding: 250px 0 140px;\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around; }\n\nheader h1, .rocketship {\n  transform: rotate(270deg); }\n\nheader h1 {\n  font-size: 5rem;\n  font-family: 'a_spaceregular', sans-serif;\n  color: #e1b9a7;\n  text-shadow: 1px 3px 3px #b29284;\n  text-transform: uppercase; }\n\n.rocketship {\n  width: 100px;\n  height: 100px;\n  font-size: 4.5rem;\n  text-shadow: -1px 2px #757575, -1px 4px #666, -1px 5px #4c4c4c;\n  background: url(\"/src/images/mars-icon.png\");\n  background-size: 100px 100px;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n/*===========================*/\n/*========Virtual DOM========*/\n/*===========================*/\n.cta-button {\n  width: 225px;\n  height: auto;\n  font-size: 1.4rem;\n  font-weight: bold;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  text-shadow: 2px 2px 1px #c693a4; }\n\n.cta-button, .question-area {\n  padding: 25px;\n  color: #4e0234;\n  text-align: center;\n  border: 2px solid #fff;\n  border-radius: 0.5rem;\n  background-color: #f2c4b0;\n  opacity: 0.8; }\n\n.question-area {\n  font-size: 1.3rem;\n  font-weight: bold;\n  font-style: italic; }\n\n.question-area input {\n  width: 200px;\n  outline: none;\n  margin: 7px;\n  padding: 5px;\n  font-family: 'open_sanslight', sans-serif;\n  font-size: 1rem;\n  color: #913b37;\n  text-align: center;\n  background-color: #f2c4b0;\n  border-top: 0px;\n  border-right: 0px;\n  border-left: 0px;\n  border-bottom: 1px solid #4e0234; }\n\n.pass {\n  width: 100vw;\n  background-color: red; }\n", ""]);
 
 	// exports
 
