@@ -144,7 +144,6 @@ class QuizPage extends React.Component {
     }
   }
 
-
   //The following is a built-in function on React. You can put it anywhere
   //as it runs all the time. If any changes happen in a class, it will be called.
   //In this case, it will go back to the first page if the user fails.
@@ -163,7 +162,7 @@ class QuizPage extends React.Component {
           <p>{this.state.questionnaire[this.state.itemNum].ask}</p>
           <form>
             <input type='text' ref="userAnswer"/>
-            <button onClick={this._submitAnswer.bind(this)}>Submit</button>
+            <button className="submit-answer" onClick={this._submitAnswer.bind(this)}>Submit</button>
           </form>
         </div> : ''}
         <button onClick={this._tallyScore.bind(this)}>Calculate</button>
