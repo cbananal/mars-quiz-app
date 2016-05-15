@@ -98,13 +98,15 @@ class QuizPage extends React.Component {
             result: false
           }
       ],
-      itemNum: 0 //This tracks the question the user is currently on.
+      itemNum: 0, //This tracks the question the user is currently on.
+      empty: ''
     }
   }
 
   _submitAnswer(button) {
     button.preventDefault();
 
+    //Changes user's answer to lowercase so as not to make the quiz case-sensitive
     let userAnswer = this.refs.userAnswer.value.toLowerCase();
     // console.log(userAnswer);
 
@@ -174,6 +176,26 @@ class QuizPage extends React.Component {
   }
 } //end class QuizPage
 
+
+class PassPage extends React.Component {
+  render() {
+    return(
+      <div>
+        Pass
+      </div>
+    );
+  }
+}
+
+class FailPage extends React.Component {
+  render() {
+    return(
+      <div>
+        Fail
+      </div>
+    );
+  }
+}
 
 
 

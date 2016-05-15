@@ -200,7 +200,7 @@
 	    _this4.state = {
 	      questionnaire: [{
 	        ask: 'What is the highest mountain on Mars?',
-	        answer: 'Mons Olympus',
+	        answer: 'mons olympus',
 	        result: false //There is no answer given yet that's why it starts at false.
 	      }, {
 	        ask: 'What year did the Sojourner Rover, the first robot rover, go to Mars?',
@@ -224,11 +224,12 @@
 	      button.preventDefault();
 
 	      var userAnswer = this.refs.userAnswer.value.toLowerCase();
-	      console.log(userAnswer);
+	      // console.log(userAnswer);
+
 	      // console.log(this.refs.userAnswer.value);
 	      //newQuestionnaire is a new array copied from the state questionnaire so we can modify it.
 	      //listblock refers to the whole list (ask, answer, result) in the array questionnaire.
-	      if (this.refs.userAnswer.value === this.state.questionnaire[this.state.itemNum].answer) {
+	      if (userAnswer === this.state.questionnaire[this.state.itemNum].answer) {
 	        var newQuestionnaire = this.state.questionnaire.map(function (listblock) {
 	          if (_this5.state.questionnaire[_this5.state.itemNum] === listblock) {
 	            listblock.result = true;
