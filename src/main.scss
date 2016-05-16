@@ -164,16 +164,26 @@ header h1 {
 }
 
 .pass-page {
-  width: 500px;
-  height: 200px;
+  width: 86vw;
+  height: auto;
+  font-size: 8rem;
+  font-family: 'a_spaceregular', sans-serif;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3rem;
   background-color: #81c157;
 }
 
 .fail-page {
-  width: 500px;
-  height: 200px;
+  width: 86vw;
+  height: auto;
+  font-size: 8rem;
+  font-family: 'a_spaceregular', sans-serif;
   color: #fff;
+  text-align: center;
   text-transform: uppercase;
+  letter-spacing: 3rem;
   background-color: #c10101;
 }
 
