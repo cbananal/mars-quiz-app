@@ -88,8 +88,11 @@ export default class QuizPage extends React.Component {
 
   render() {
     return (
-      <div>
-      <Timer className="clock" navigate={this._setFail.bind(this)}/>
+      <div className="quiz-main">
+        <div className="clock">
+          <Timer navigate={this._setFail.bind(this)}/>
+        </div>
+        {/*end className clock*/}
       {this.state.itemNum < 3 ?
         <div className="question-area">
           <p>{this.state.questionnaire[this.state.itemNum].ask}</p>

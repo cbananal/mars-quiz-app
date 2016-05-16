@@ -74,7 +74,7 @@ header h1 {
   text-shadow:
     -1px 2px #757575,
     -1px 4px #666,
-    -1px 5px #4c4c4c;
+    1px 5px #353738;
   background:
     url('/src/images/mars-icon.png');
     background-size: 100px 100px;
@@ -108,6 +108,15 @@ header h1 {
   text-shadow: 2px 2px 1px #c693a4;
 }
 
+.quiz-main {
+  width: 80vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .cta-button, .question-area {
   padding: 25px;
   color: #4e0234;
@@ -119,6 +128,8 @@ header h1 {
 }
 
 .question-area {
+  width: auto;
+  height: auto;
   font-size: 1.3rem;
   font-weight: bold;
   font-style: italic;
@@ -126,7 +137,6 @@ header h1 {
 
 .question-area input {
   width: 200px;
-  outline: none;
   margin: 7px;
   padding: 5px;
   font-family: 'open_sanslight', sans-serif;
@@ -134,6 +144,7 @@ header h1 {
   color: #913b37;
   text-align: center;
   background-color: #f2c4b0;
+  outline: none;
   border-top: 0px;
   border-right: 0px;
   border-left: 0px;
@@ -156,7 +167,6 @@ header h1 {
   width: 500px;
   height: 200px;
   background-color: #81c157;
-  // opacity: 0.3;
 }
 
 .fail-page {
@@ -168,5 +178,11 @@ header h1 {
 }
 
 .clock {
-  font-family: 'serif';
+  font-size: 2.8rem;
+  color: #f9f7f9;
+  font-family: 'a_spaceregular';
+  text-shadow: 0 0 20px #ea159f;
+  position: absolute;
+  top: 3.5rem;
+  right: 3.5rem;
 }
