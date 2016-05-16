@@ -211,18 +211,19 @@
 	        answer: 'war',
 	        result: false
 	      }],
-	      itemNum: 0 //This tracks the question the user is currently on.
-	    };
+	      itemNum: 0 };
 	    return _this4;
 	  }
 
 	  _createClass(QuizPage, [{
 	    key: '_submitAnswer',
+	    //This tracks the question the user is currently on.
 	    value: function _submitAnswer(button) {
 	      var _this5 = this;
 
 	      button.preventDefault();
 
+	      //Changes user's answer to lowercase so as not to make the quiz case-sensitive
 	      var userAnswer = this.refs.userAnswer.value.toLowerCase();
 	      // console.log(userAnswer);
 
@@ -246,6 +247,11 @@
 	      this.refs.userAnswer.value = "";
 	    }
 	  }, {
+	    key: '_setFail',
+	    value: function _setFail() {
+	      this.props.navigate('fail');
+	    }
+	  }, {
 	    key: '_tallyScore',
 	    value: function _tallyScore() {
 	      var rightAnswers = 0;
@@ -262,7 +268,7 @@
 	      if (rightAnswers > 2) {
 	        this.props.navigate('pass');
 	      } else {
-	        this.props.navigate('fail');
+	        this._setFail();
 	      }
 	    }
 
@@ -284,6 +290,7 @@
 	      return React.createElement(
 	        'div',
 	        null,
+	        React.createElement(Timer, { navigate: this._setFail.bind(this) }),
 	        this.state.itemNum < 3 ? React.createElement(
 	          'div',
 	          { className: 'question-area' },
@@ -314,6 +321,144 @@
 
 	  return QuizPage;
 	}(React.Component); //end class QuizPage
+
+	var PassPage = function (_React$Component5) {
+	  _inherits(PassPage, _React$Component5);
+
+	  function PassPage() {
+	    _classCallCheck(this, PassPage);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PassPage).apply(this, arguments));
+	  }
+
+	  _createClass(PassPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'pass-page' },
+	        React.createElement(
+	          'p',
+	          null,
+	          'Pass'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return PassPage;
+	}(React.Component); //end class PassPage
+
+	var FailPage = function (_React$Component6) {
+	  _inherits(FailPage, _React$Component6);
+
+	  function FailPage() {
+	    _classCallCheck(this, FailPage);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FailPage).apply(this, arguments));
+	  }
+
+	  _createClass(FailPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'fail-page' },
+	        React.createElement(
+	          'p',
+	          null,
+	          'Fail'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return FailPage;
+	}(React.Component); //end class FailPage
+
+	var Timer = function (_React$Component7) {
+	  _inherits(Timer, _React$Component7);
+
+	  function Timer() {
+	    _classCallCheck(this, Timer);
+
+	    var _this8 = _possibleConstructorReturn(this, Object.getPrototypeOf(Timer).call(this));
+
+	    _this8.state = {
+	      seconds: 60
+	    };
+	    return _this8;
+	  }
+
+	  //This built-in function runs only once the page is loaded, as opposed to
+	  //componentDidUpdate which loads the page and runs all the time, and updates
+	  //changes made.
+
+
+	  _createClass(Timer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this9 = this;
+
+	      this.timer = setInterval(function () {
+	        if (_this9.state.seconds > 0) {
+	          _this9.setState({ seconds: _this9.state.seconds - 1 });
+	        }
+	      }, 1000); //1000ms is equal to 1 sec
+	    }
+	  }, {
+	    key: '_transitionToFail',
+	    value: function _transitionToFail() {
+	      this.props.navigate('fail');
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (this.state.seconds === 0) {
+	        this._transitionToFail();
+	        clearInterval();
+	      }
+	      this.setState({ seconds: this.state.seconds });
+	    }
+
+	    //Math.floor is a built-in function that rounds off the number.
+
+	  }, {
+	    key: '_convertToClock',
+	    value: function _convertToClock() {
+	      var minute = Math.floor(this.state.seconds / 60);
+	      var seconds = Math.floor(this.state.seconds % 60); //Get whatever's left by dividing it to 60.
+	      if (seconds < 10) {
+	        seconds = '0' + seconds; //Adds zero before the second so it displays as 0:09 instead of 0:9
+	      }
+	      var clockTime = minute + ':' + seconds; //Combines minutes and seconds
+	      return clockTime;
+	    }
+
+	    //When the class/page is gone, the following will run.
+
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount(prevProps, prevState) {
+	      clearInterval();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'p',
+	          null,
+	          this._convertToClock()
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Timer;
+	}(React.Component); //end class Timer
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('mars-react'));
 
@@ -20791,7 +20936,7 @@
 
 
 	// module
-	exports.push([module.id, "/*===========================*/\n/*===========Fonts===========*/\n/*===========================*/\n/*---------Open Sans---------*/\n@font-face {\n  font-family: 'open_sanslight';\n  src: url(\"/src/fonts/opensans-light-webfont.eot\");\n  src: url(\"/src/fonts/opensans-light-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/opensans-light-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/opensans-light-webfont.woff\") format(\"woff\"), url(\"/src/fonts/opensans-light-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/opensans-light-webfont.svg#open_sanslight\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: 'a_spaceregular';\n  src: url(\"/src/fonts/aspace_demo-webfont.eot\");\n  src: url(\"/src/fonts/aspace_demo-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/aspace_demo-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/aspace_demo-webfont.woff\") format(\"woff\"), url(\"/src/fonts/aspace_demo-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/aspace_demo-webfont.svg#a_spaceregular\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*===========================*/\n/*===========Global==========*/\n/*===========================*/\nhtml {\n  font-size: 16px; }\n\n.wrapper {\n  height: 100vh;\n  font-family: 'open_sanslight', sans-serif;\n  color: #fff;\n  display: flex;\n  justify-content: center; }\n\nheader {\n  width: 180px;\n  padding: 250px 0 140px;\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around; }\n\nheader h1, .rocketship {\n  transform: rotate(270deg); }\n\nheader h1 {\n  font-size: 5rem;\n  font-family: 'a_spaceregular', sans-serif;\n  color: #e1b9a7;\n  text-shadow: 1px 3px 3px #b29284;\n  text-transform: uppercase; }\n\n.rocketship {\n  width: 100px;\n  height: 100px;\n  font-size: 4.5rem;\n  text-shadow: -1px 2px #757575, -1px 4px #666, -1px 5px #4c4c4c;\n  background: url(\"/src/images/mars-icon.png\");\n  background-size: 100px 100px;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n/*===========================*/\n/*========Virtual DOM========*/\n/*===========================*/\n.cta-button {\n  width: 225px;\n  height: auto;\n  font-size: 1.4rem;\n  font-weight: bold;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  text-shadow: 2px 2px 1px #c693a4; }\n\n.cta-button, .question-area {\n  padding: 25px;\n  color: #4e0234;\n  text-align: center;\n  border: 2px solid #fff;\n  border-radius: 0.5rem;\n  background-color: #f2c4b0;\n  opacity: 0.8; }\n\n.question-area {\n  font-size: 1.3rem;\n  font-weight: bold;\n  font-style: italic; }\n\n.question-area input {\n  width: 200px;\n  outline: none;\n  margin: 7px;\n  padding: 5px;\n  font-family: 'open_sanslight', sans-serif;\n  font-size: 1rem;\n  color: #913b37;\n  text-align: center;\n  background-color: #f2c4b0;\n  border-top: 0px;\n  border-right: 0px;\n  border-left: 0px;\n  border-bottom: 1px solid #4e0234; }\n\n.submit-answer {\n  width: 100px;\n  padding: 5px;\n  margin-top: 20px;\n  font-family: 'a_spaceregular', 'open_sanslight', sans-serif;\n  text-transform: uppercase;\n  background-color: #f2c4b0;\n  border-color: #913b37;\n  border-radius: 0.5rem; }\n\n.pass {\n  width: 100vw;\n  background-color: red; }\n", ""]);
+	exports.push([module.id, "/*===========================*/\n/*===========Fonts===========*/\n/*===========================*/\n/*---------Open Sans---------*/\n@font-face {\n  font-family: 'open_sanslight';\n  src: url(\"/src/fonts/opensans-light-webfont.eot\");\n  src: url(\"/src/fonts/opensans-light-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/opensans-light-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/opensans-light-webfont.woff\") format(\"woff\"), url(\"/src/fonts/opensans-light-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/opensans-light-webfont.svg#open_sanslight\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: 'a_spaceregular';\n  src: url(\"/src/fonts/aspace_demo-webfont.eot\");\n  src: url(\"/src/fonts/aspace_demo-webfont.eot?#iefix\") format(\"embedded-opentype\"), url(\"/src/fonts/aspace_demo-webfont.woff2\") format(\"woff2\"), url(\"/src/fonts/aspace_demo-webfont.woff\") format(\"woff\"), url(\"/src/fonts/aspace_demo-webfont.ttf\") format(\"truetype\"), url(\"/src/fonts/aspace_demo-webfont.svg#a_spaceregular\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal; }\n\n/*===========================*/\n/*===========Global==========*/\n/*===========================*/\nhtml {\n  font-size: 16px; }\n\n.wrapper {\n  height: 100vh;\n  font-family: 'open_sanslight', sans-serif;\n  color: #fff;\n  display: flex;\n  justify-content: center; }\n\nheader {\n  width: 180px;\n  padding: 250px 0 140px;\n  background: linear-gradient(to bottom, #602722 0%, #4d0135 100%);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around; }\n\nheader h1, .rocketship {\n  transform: rotate(270deg); }\n\nheader h1 {\n  font-size: 5rem;\n  font-family: 'a_spaceregular', sans-serif;\n  color: #e1b9a7;\n  text-shadow: 1px 3px 3px #b29284;\n  text-transform: uppercase; }\n\n.rocketship {\n  width: 100px;\n  height: 100px;\n  font-size: 4.5rem;\n  text-shadow: -1px 2px #757575, -1px 4px #666, -1px 5px #4c4c4c;\n  background: url(\"/src/images/mars-icon.png\");\n  background-size: 100px 100px;\n  align-self: center;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n\n#mars-react {\n  width: 100%;\n  background: url(\"/src/images/mars-bg.jpg\") no-repeat;\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  align-items: center; }\n\n/*===========================*/\n/*========Virtual DOM========*/\n/*===========================*/\n.cta-button {\n  width: 225px;\n  height: auto;\n  font-size: 1.4rem;\n  font-weight: bold;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  text-shadow: 2px 2px 1px #c693a4; }\n\n.cta-button, .question-area {\n  padding: 25px;\n  color: #4e0234;\n  text-align: center;\n  border: 2px solid #fff;\n  border-radius: 0.5rem;\n  background-color: #f2c4b0;\n  opacity: 0.8; }\n\n.question-area {\n  font-size: 1.3rem;\n  font-weight: bold;\n  font-style: italic; }\n\n.question-area input {\n  width: 200px;\n  outline: none;\n  margin: 7px;\n  padding: 5px;\n  font-family: 'open_sanslight', sans-serif;\n  font-size: 1rem;\n  color: #913b37;\n  text-align: center;\n  background-color: #f2c4b0;\n  border-top: 0px;\n  border-right: 0px;\n  border-left: 0px;\n  border-bottom: 1px solid #4e0234; }\n\n.submit-answer {\n  width: 100px;\n  padding: 5px;\n  margin-top: 20px;\n  font-family: 'a_spaceregular', 'open_sanslight', sans-serif;\n  text-transform: uppercase;\n  background-color: #f2c4b0;\n  border-color: #913b37;\n  border-radius: 0.5rem;\n  outline: 0; }\n\n.pass-page {\n  width: 500px;\n  height: 200px;\n  background-color: #81c157; }\n\n.fail-page {\n  width: 500px;\n  height: 200px;\n  background-color: #c10101;\n  opacity: 0.5; }\n", ""]);
 
 	// exports
 

@@ -152,7 +152,21 @@ header h1 {
   outline: 0;
 }
 
-.pass {
-  width: 100vw;
-  background-color: red;
+.pass-page {
+  width: 500px;
+  height: 200px;
+  background-color: #81c157;
+  // opacity: 0.3;
+}
+
+.fail-page {
+  width: 500px;
+  height: 200px;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #c10101;
+}
+
+.clock {
+  font-family: 'serif';
 }
