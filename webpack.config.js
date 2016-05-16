@@ -10,8 +10,11 @@ module.exports = {
         publicPath: '/build/',
         path: path.join(__dirname, 'build/')
     },
-    // devtool: '#source-map',
-    devServer: { //update your webpack config with this to prevent your cpu from melting!
+    devtool: '#source-map',
+
+    //Poll 2000: update your webpack config with this to prevent your CPU from melting!
+    //Compress:true - Using webpack to import bg images via your scss files? You get free ​gzip compression*!
+    devServer: {
       watch:true,
       inline: true,
       host: '0.0.0.0',
