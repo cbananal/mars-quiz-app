@@ -13,4 +13,4 @@ React.js was an overwhelming and challenging experience to me as I was introduce
 
 To be honest, there is still so much to learn and to comprehend about React but I'm grateful that this project has already given me an overview/structure of said library, and to be armed with that knowledge is so helpful as I continue delving more into that world.
 
-## Design comprehensive by RED Academy, Inc.*
+** Design comprehensive by RED Academy, Inc.*
