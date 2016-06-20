@@ -3,8 +3,6 @@
 /*===========================*/
 
 /*---------Open Sans---------*/
-
-
 @font-face {
     font-family: 'open_sanslight';
     src: url('/src/fonts/opensans-light-webfont.eot');
@@ -17,6 +15,7 @@
     font-style: normal;
 }
 
+/*---------Space---------*/
 @font-face {
     font-family: 'a_spaceregular';
     src: url('/src/fonts/aspace_demo-webfont.eot');
@@ -82,7 +81,6 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 #mars-react {
