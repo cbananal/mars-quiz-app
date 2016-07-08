@@ -2,6 +2,7 @@
 A single-page application built with React.js. It asks three questions to test users' knowledge on Planet Mars. A score less than three will lead to the fail page and will then prompt the user to try and begin again.
 
 The following are the answers for each question in the quiz. Note that they are not case sensitive:
+
 1. Mons Olympus
 2. 1997
 3. war
