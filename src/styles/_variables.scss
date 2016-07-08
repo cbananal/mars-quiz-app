@@ -1,3 +1,6 @@
 /*--------- Fonts ------------*/
-$default-text: 'open_sanslight', sans-serif;
+$body-text: 'open_sanslight', sans-serif;
 $accent-text: 'a_spaceregular', 'open_sanslight', sans-serif;
+
+/*--------- Animation ------------*/
+$flicker: flicker 1s ease 1s infinite;

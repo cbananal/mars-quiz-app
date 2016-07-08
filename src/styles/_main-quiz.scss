@@ -42,7 +42,7 @@
   width: 200px;
   margin: 7px;
   padding: 5px;
-  font-family: 'open_sanslight', sans-serif;
+  font-family: $body-text;
   font-size: 1rem;
   color: #913b37;
   text-align: center;
@@ -58,7 +58,7 @@
   width: 100px;
   padding: 5px;
   margin-top: 20px;
-  font-family: 'a_spaceregular', 'open_sanslight', sans-serif;
+  font-family: $accent-text;
   text-transform: uppercase;
   background-color: #f2c4b0;
   border-color: #913b37;
@@ -69,7 +69,7 @@
 .clock {
   font-size: 2.8rem;
   color: #f9f7f9;
-  font-family: 'a_spaceregular';
+  font-family: $accent-text;
   text-shadow: 0 0 20px #ea159f;
   position: absolute;
   top: 3.5rem;

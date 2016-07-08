@@ -3,9 +3,10 @@
   width: 86vw;
   height: auto;
   font-size: 8rem;
-  font-family: 'a_spaceregular', sans-serif;
+  font-family: $accent-text;
   color: #fff;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 3rem;
+  animation: $flicker;
 }

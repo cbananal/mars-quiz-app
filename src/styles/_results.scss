@@ -10,11 +10,9 @@
 .pass-page {
   @include results;
   background-color: #81c157;
-  animation: flicker 1s ease 1s infinite;
 }
 
 .fail-page {
   @include results;
   background-color: #c10101;
-  animation: flicker 1s ease 1s infinite;
 }
