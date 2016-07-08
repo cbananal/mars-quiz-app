@@ -10,7 +10,7 @@ html {
 .wrapper {
   height: 100vh;
   font-family: $body-text;
-  color: #fff;
+  color: $default-color;
   display: flex;
   justify-content: center;
 }

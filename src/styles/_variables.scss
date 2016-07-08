@@ -1,6 +1,27 @@
+
 /*--------- Fonts ------------*/
 $body-text: 'open_sanslight', sans-serif;
 $accent-text: 'a_spaceregular', 'open_sanslight', sans-serif;
+
+
+/*--------- Colors ------------*/
+$default-color: #fff; //white
+$brand-color: #4e0234; //violet
+$accent-color: #f2c4b0; //nude
+$alternative-color: #913b37; //chocolate
+$heading-color: #e1b9a7;
+$glow-color: #ea159f; //used for the timer
+$pass-color: #81c157; //green
+$fail-color: #c10101; //red
+
+$gradient-background: linear-gradient(to bottom, #602722 0%,#4d0135 100%);
+
+$brand-color-shadow: #c693a4;
+$heading-color-shadow: #b29284;
+$icon-shadow-one: #757575;
+$icon-shadow-two: #666;
+$icon-shadow-three: #353738;
+
 
 /*--------- Animation ------------*/
 $flicker: flicker 1s ease 1s infinite;

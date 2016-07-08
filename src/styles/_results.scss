@@ -1,6 +1,6 @@
 @keyframes flicker {
   50% {
-    opacity: 0.0;
+    opacity: 0;
   }
   100% {
     opacity: 1;
@@ -9,10 +9,10 @@
 
 .pass-page {
   @include results;
-  background-color: #81c157;
+  background-color: $pass-color;
 }
 
 .fail-page {
   @include results;
-  background-color: #c10101;
+  background-color: $fail-color;
 }

@@ -8,7 +8,7 @@
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 1px #c693a4;
+  text-shadow: 2px 2px 1px $brand-color-shadow;
 }
 
 .quiz-main {
@@ -22,11 +22,11 @@
 
 .cta-button, .question-area {
   padding: 25px;
-  color: #4e0234;
+  color: $brand-color;
   text-align: center;
-  border: 2px solid #fff;
+  border: 2px solid $default-color;
   border-radius: 0.5rem;
-  background-color: #f2c4b0;
+  background-color: $accent-color;
   opacity: 0.8;
 }
 
@@ -44,14 +44,14 @@
   padding: 5px;
   font-family: $body-text;
   font-size: 1rem;
-  color: #913b37;
+  color: $alternative-color;
   text-align: center;
-  background-color: #f2c4b0;
+  background-color: $accent-color;
   outline: none;
   border-top: 0px;
   border-right: 0px;
   border-left: 0px;
-  border-bottom: 1px solid #4e0234;
+  border-bottom: 1px solid $brand-color;
 }
 
 .submit-answer {
@@ -60,17 +60,16 @@
   margin-top: 20px;
   font-family: $accent-text;
   text-transform: uppercase;
-  background-color: #f2c4b0;
-  border-color: #913b37;
+  background-color: $accent-color;
+  border-color: $alternative-color;
   border-radius: 0.5rem;
-  outline: 0;
+  outline: none;
 }
 
 .clock {
   font-size: 2.8rem;
-  color: #f9f7f9;
   font-family: $accent-text;
-  text-shadow: 0 0 20px #ea159f;
+  text-shadow: 0 0 20px $glow-color;
   position: absolute;
   top: 3.5rem;
   right: 3.5rem;
