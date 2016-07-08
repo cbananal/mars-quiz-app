@@ -1,0 +1,11 @@
+//Shared Styling for Pass and Fail Pages
+@mixin results {
+  width: 86vw;
+  height: auto;
+  font-size: 8rem;
+  font-family: 'a_spaceregular', sans-serif;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3rem;
+}

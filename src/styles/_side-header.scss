@@ -1,0 +1,37 @@
+header {
+  width: 180px;
+  padding: 250px 0 140px;
+  background: linear-gradient(to bottom, #602722 0%,#4d0135 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+header h1, .rocketship {
+  transform: rotate(270deg);
+}
+
+header h1 {
+  font-size: 5rem;
+  font-family: 'a_spaceregular', sans-serif;
+  color: #e1b9a7;
+  text-shadow: 1px 3px 3px #b29284;
+  text-transform: uppercase;
+}
+
+.rocketship {
+  width: 100px;
+  height: 100px;
+  font-size: 4.5rem;
+  text-shadow:
+    -1px 2px #757575,
+    -1px 4px #666,
+    1px 5px #353738;
+  background:
+    url('/src/images/mars-icon.png');
+    background-size: 100px 100px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

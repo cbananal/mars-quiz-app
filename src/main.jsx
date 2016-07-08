@@ -9,8 +9,7 @@ import FailPage from './components/failpage';
 import PassPage from './components/passpage';
 //Timer is not imported here because it "lives" inside the QuizPage.
 
-require ('./reset.scss');
-require ('./main.scss');
+require ('./styles/main.scss');
 
 class App extends React.Component {
   constructor(props) { //Constructor and props enable the use of 'this.state'

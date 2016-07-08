@@ -1,0 +1,77 @@
+/*===========================*/
+/*========Virtual DOM========*/
+/*===========================*/
+.cta-button {
+  width: 225px;
+  height: auto;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 1px #c693a4;
+}
+
+.quiz-main {
+  width: 80vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-button, .question-area {
+  padding: 25px;
+  color: #4e0234;
+  text-align: center;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+  background-color: #f2c4b0;
+  opacity: 0.8;
+}
+
+.question-area {
+  width: auto;
+  height: auto;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.question-area input {
+  width: 200px;
+  margin: 7px;
+  padding: 5px;
+  font-family: 'open_sanslight', sans-serif;
+  font-size: 1rem;
+  color: #913b37;
+  text-align: center;
+  background-color: #f2c4b0;
+  outline: none;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px solid #4e0234;
+}
+
+.submit-answer {
+  width: 100px;
+  padding: 5px;
+  margin-top: 20px;
+  font-family: 'a_spaceregular', 'open_sanslight', sans-serif;
+  text-transform: uppercase;
+  background-color: #f2c4b0;
+  border-color: #913b37;
+  border-radius: 0.5rem;
+  outline: 0;
+}
+
+.clock {
+  font-size: 2.8rem;
+  color: #f9f7f9;
+  font-family: 'a_spaceregular';
+  text-shadow: 0 0 20px #ea159f;
+  position: absolute;
+  top: 3.5rem;
+  right: 3.5rem;
+}
